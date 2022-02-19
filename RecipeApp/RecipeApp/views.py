@@ -1,5 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from mysqlx import Auth
 from RecipeApp import settings
 
 def home(request):
@@ -7,19 +9,25 @@ def home(request):
 
 def register(request):
     if request.method=='GET':
-        return render(request, 'auth pages/register.html')
+        form=UserCreationForm()
+        
     if request.method=='POST':
-        inputUsername=request.POST['username']
-        inputPassword=request.POST['password']
-        return HttpResponse("User register attempt received: Username was " + inputUsername + " and the password was " + inputPassword + " (dont forget to hash when I add to database)")
+        form=UserCreationForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            #LOG IN THE USER HERE
+
+    return render(request, 'auth pages/register.html', {'form': form})
 
 
 def login(request):
     if request.method=='GET':
-        return render(request, 'auth pages/login.html')
-    if request.method=='POST':
-        inputUsername=request.POST['username']
-        inputPassword=request.POST['password']
-        return HttpResponse("User login attempt received: Username was " + inputUsername + " and the password was " + inputPassword + " (dont forget to hash when I add to database)")
+        form=AuthenticationForm()
+        return render(request, 'auth pages/login.html', {'form': form})
 
+    if request.method=='POST':
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            #LOG IN THE USER HERE
+            return HttpResponse("valid login!")
     
