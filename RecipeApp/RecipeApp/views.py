@@ -1,13 +1,19 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from mysqlx import Auth
 from RecipeApp import settings
 
 def home(request):
-    return render(request, 'index.html')
+    #non logged in users will be sent the response here
+    if not request.user.is_authenticated:
+        return render(request, 'index.html')
+    #logged in authenticated users are sent the response here
+    else:
+        return HttpResponse("You are an authenticated user who is currently logged in and at the home page!")
 
-def register(request):
+def register_view(request):
     if request.method=='GET':
         form=UserCreationForm()
         
@@ -16,11 +22,14 @@ def register(request):
         if form.is_valid():
             form.save()
             #LOG IN THE USER HERE
+            user=form.get_user()
+            login(request, user)
+            return redirect('/')
 
     return render(request, 'auth pages/register.html', {'form': form})
 
 
-def login(request):
+def login_view(request):
     if request.method=='GET':
         form=AuthenticationForm()
         return render(request, 'auth pages/login.html', {'form': form})
@@ -28,6 +37,8 @@ def login(request):
     if request.method=='POST':
         form = AuthenticationForm(data=request.POST)
         if form.is_valid():
-            #LOG IN THE USER HERE
-            return HttpResponse("valid login!")
+            #LOG IN THE USER HERE 
+            user=form.get_user()
+            login(request, user)
+            return redirect('/')
     
