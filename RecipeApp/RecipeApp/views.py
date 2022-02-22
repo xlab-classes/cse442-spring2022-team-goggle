@@ -3,15 +3,22 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from mysqlx import Auth
-from pyparsing import unicode_string
 from RecipeApp import settings
-from pymongo import MongoClient
+import mysql.connector
 import bcrypt
 
-#Connect to mongo database here
-client = MongoClient('localhost')
-db=client['recipeApp']
-accountCollection=db['accounts']
+
+#Connect to sql database here
+config = {
+  'user': 'admin',
+  'password': 'admin',
+  'host': '127.0.0.1',
+  'database': 'recipeapp',
+  'raise_on_warnings': True
+}
+
+conn = mysql.connector.connect(**config)
+
 
 
 def home(request):
@@ -29,16 +36,8 @@ def register_view(request):
     if request.method=='POST':
         form=UserCreationForm(data=request.POST)
         if form.is_valid():
+            #add user to database
             form.save()
-            #Add the new account to mongo database
-            username=request.POST["username"]
-            unhashedPassword=request.POST["password1"]
-            #hash password
-            salt=bcrypt.gensalt()
-            hashedPassword=bcrypt.hashpw(unhashedPassword.encode(), salt)
-            accountDoc={"username": username,
-                        "password": hashedPassword}
-            accountCollection.insert_one(accountDoc)
             #SEND USER TO LOGIN PAGE
             return redirect('/login')
 
@@ -57,4 +56,6 @@ def login_view(request):
             user=form.get_user()
             login(request, user)
             return redirect('/')
-    
+
+#close mysql database connection    
+conn.close()
