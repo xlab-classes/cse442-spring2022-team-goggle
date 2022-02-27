@@ -1,10 +1,7 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Hello World</title>
-</head>
+{% extends "base.html" %}
+{% block content %}
 <body>
-    <h1> Hello there! Feel free to login or register below</h1>
+    <h1> Hello there {{ username }} ! Feel free to login or register below</h1>
 
     <br><br>
     <h3>
@@ -16,3 +13,4 @@
     </h3>
 </body>
 </html>
+{% endblock %}

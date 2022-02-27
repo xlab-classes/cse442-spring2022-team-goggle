@@ -5,7 +5,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from mysqlx import Auth
 from RecipeApp import settings
 import mysql.connector
-import bcrypt
+from django.contrib.auth import logout
 
 
 #Connect to sql database here
@@ -24,10 +24,10 @@ conn = mysql.connector.connect(**config)
 def home(request):
     #non logged in users will be sent the response here
     if not request.user.is_authenticated:
-        return render(request, 'index.html')
+        return render(request, 'index.html', {'username': 'Guest'})
     #logged in authenticated users are sent the response here
     else:
-        return HttpResponse("You are an authenticated user who is currently logged in and at the home page!")
+        return render(request, 'index.html', {'username': request.user.username})
 
 def register_view(request):
     if request.method=='GET':
@@ -56,6 +56,14 @@ def login_view(request):
             user=form.get_user()
             login(request, user)
             return redirect('/')
+
+def logout_view(request):
+    currentUser=request.user
+    if (currentUser.is_authenticated):
+        logout(request)
+        return redirect('/')
+    else:
+        return redirect('/')
 
 #close mysql database connection    
 conn.close()
