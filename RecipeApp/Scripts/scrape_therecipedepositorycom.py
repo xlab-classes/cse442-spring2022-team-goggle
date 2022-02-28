@@ -27,10 +27,3 @@ for category_url in category_urls:
     for item in recipe_items:
         for a in item.find_all('a'):
             print(a['href'])
-
-
-
-    # add the links to the collection of links
-    #recipe_urls = recipe_urls + new_links_in_category
-
-    #print(new_links_in_category)
