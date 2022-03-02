@@ -16,8 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from . import views
+from . import index
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.hi)
+    #path('admin/', admin.site.urls),
+    #path('', views.hi)
+    path('',index.webpage1, name='webpage1'),
+    path('new-recipe',index.webpage4,name='webpage4'),
+    path('recipe',index.webpage3,name='webpage3'),
+    path('register',index.webpage2,name='webpage2'),
+    path('saved-recipes',index.webpage5,name='webpage5'),
+    path('search-result',index.webpage6,name='webpage6'),
 ]
