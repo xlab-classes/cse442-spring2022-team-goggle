@@ -15,3 +15,4 @@ http://pic2recipe.csail.mit.edu/
 # Website to scrape
 https://www.therecipedepository.com/recipe/650/african-sweet-potato-and-peanut-stew - uses Recipe format from https://schema.org/Recipe
   - go to categories and go through each one
+ 
