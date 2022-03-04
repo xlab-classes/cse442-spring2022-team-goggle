@@ -1,7 +1,6 @@
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse
 import requests
-import pdb
 
 sitemap_xml ="https://www.therecipedepository.com/site-map/categories"
 sitemap_response = requests.get(sitemap_xml)
@@ -32,6 +31,20 @@ for category_url in category_urls:
         for a in item.find_all('a'):
             recipe_urls.append("https://www.therecipedepository.com" + a['href'])
     for url in recipe_urls:
-        print(url)
-    print()
+        get = requests.get(url)
+        soup = BeautifulSoup(get.content, "html.parser")
+
+        """
+        These are the values for the data containing newline characters.
+        Since we have dont have the database set up, I will leave them for the
+        next task so that we can add them accordingly
+
+        It is also an option to scrape the ingredients from here and then add those
+        to the viable ingredients for the application
+
+        """
+        title = soup.find_all(class_="recipe-name")[0].text
+        ingredients = soup.find_all(class_="ingredients")[0].text
+        directions = soup.find_all(class_="directions")[0].text
+
 print("Done")
