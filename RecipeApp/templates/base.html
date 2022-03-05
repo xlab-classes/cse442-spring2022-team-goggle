@@ -1,0 +1,14 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World</title>
+</head>
+<!-- Nav bar can be put here. Right now there is only a logout button pushed to the right-->
+<form action="/logout/" align="right" method="get">
+    <label class="logout">
+        <input type="submit" value="Logout">
+    </label>
+  </form>
+
+{% block content %}
+{% endblock %}
