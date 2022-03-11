@@ -54,5 +54,5 @@ def scrape_recipes:
             directions = soup.find_all(class_="directions")[0].text
             dict = {"title": title, "ingredients": ingredients, "directions": directions}
             recipes += [dict]
-    return dict
+    return recipes
     print("Done")
