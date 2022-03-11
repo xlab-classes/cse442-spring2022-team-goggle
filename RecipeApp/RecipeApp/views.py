@@ -19,6 +19,8 @@ config = {
 
 conn = mysql.connector.connect(**config)
 
+connCursor=conn.cursor()
+connCursor.execute("CREATE TABLE recipes(title VARCHAR(32), ingredients VARCHAR(300), instructions VARCHAR(300))")
 
 
 def home(request):
