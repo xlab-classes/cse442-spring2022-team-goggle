@@ -10,17 +10,19 @@ from django.contrib.auth import logout
 
 #Connect to sql database here
 config = {
-  'user': 'admin',
-  'password': 'admin',
-  'host': '127.0.0.1',
-  'database': 'recipeapp',
-  'raise_on_warnings': True
+  'user': 'msegan',
+  'password': '50235812',
+  'host': 'oceanus.cse.buffalo.edu',
+  'database': 'cse442_2022_spring_team_e_db',
+  'raise_on_warnings': True,
+  'autocommit' : True
 }
-
 conn = mysql.connector.connect(**config)
-
 connCursor=conn.cursor()
-connCursor.execute("CREATE TABLE recipes(title VARCHAR(32), ingredients VARCHAR(300), instructions VARCHAR(300))")
+
+
+#This is the sql statement that created our recipe table. (coupled with our scraper):
+"""connCursor.execute("CREATE TABLE recipes(title VARCHAR(200), ingredients TEXT(65000), instructions TEXT(65000))")"""
 
 
 def home(request):
@@ -66,6 +68,18 @@ def logout_view(request):
         return redirect('/')
     else:
         return redirect('/')
+
+
+
+#The following code is for debugging purposes to look into the database through print statements when starting app.
+"""
+connCursor.execute("Show tables;")
+result = connCursor.fetchall()
+ 
+for s in result:
+    print(s)
+"""
+
 
 #close mysql database connection    
 conn.close()

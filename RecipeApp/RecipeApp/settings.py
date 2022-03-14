@@ -76,13 +76,13 @@ WSGI_APPLICATION = 'RecipeApp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'mysql.connector.django',
-        'NAME': 'recipeapp',
-        'USER': 'admin',
-        'PASSWORD': 'admin',
-        'HOST': 'localhost',
+        'NAME': 'cse442_2022_spring_team_e_db',
+        'USER': 'msegan',
+        'PASSWORD': '50235812',
+        'HOST': 'oceanus.cse.buffalo.edu',
         'PORT': '3306',
         'OPTIONS': {
-            'use_pure': True,
+            'autocommit': True,
     }
     }
 }
