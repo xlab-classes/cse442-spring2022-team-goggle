@@ -24,8 +24,10 @@ def scrape_pioneer_recipes():
     for url in recipe_links:
         get = requests.get(url)
         soup = BeautifulSoup(get.content, "html.parser")
+        # if url is recipe
 
-    
+        # if url in cooking-tips-tutorials
 
+        # gonna need to catch all errors :| ... >:)
 
 scrape_pioneer_recipes()
