@@ -4,11 +4,11 @@ import requests
 
 # returns a list of dictionaries in the form {"title": title, "ingredients": ingredients, "instructions": instructions}
 
-def scrape_recipes:
+def scrape_recipes():
     recipes = []
 
     sitemap_xml ="https://www.therecipedepository.com/site-map/categories"
-    sitemap_response = requests.get(sitemap_xml)
+    sitemap_response = requests.get(sitemap_xml, verify=False)
 
     # note page.content is raw (thats why we arent using page.text)
     soup = BeautifulSoup(sitemap_response.content, "html.parser")
@@ -25,7 +25,7 @@ def scrape_recipes:
         print("-----------------------------------------------------------------------------------------")
         print("-----------------------------------------------------------------------------------------")
         # get request to the page
-        page = requests.get(category_url)
+        page = requests.get(category_url,verify=False)
 
         # load it into BeautifulSoup
         soup = BeautifulSoup(page.content, "html.parser")
@@ -37,7 +37,7 @@ def scrape_recipes:
             for a in item.find_all('a'):
                 recipe_urls.append("https://www.therecipedepository.com" + a['href'])
         for url in recipe_urls:
-            get = requests.get(url)
+            get = requests.get(url,verify=False)
             soup = BeautifulSoup(get.content, "html.parser")
 
             """
@@ -54,5 +54,4 @@ def scrape_recipes:
             directions = soup.find_all(class_="directions")[0].text
             dict = {"title": title, "ingredients": ingredients, "directions": directions}
             recipes += [dict]
-    return dict
-    print("Done")
+    return recipes

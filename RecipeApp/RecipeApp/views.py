@@ -10,15 +10,19 @@ from django.contrib.auth import logout
 
 #Connect to sql database here
 config = {
-  'user': 'admin',
-  'password': 'admin',
-  'host': '127.0.0.1',
-  'database': 'recipeapp',
-  'raise_on_warnings': True
+  'user': 'msegan',
+  'password': '50235812',
+  'host': 'oceanus.cse.buffalo.edu',
+  'database': 'cse442_2022_spring_team_e_db',
+  'raise_on_warnings': True,
+  'autocommit' : True
 }
-
 conn = mysql.connector.connect(**config)
+connCursor=conn.cursor()
 
+
+#This is the sql statement that created our recipe table. (coupled with our scraper):
+"""connCursor.execute("CREATE TABLE recipes(title VARCHAR(200), ingredients TEXT(65000), instructions TEXT(65000))")"""
 
 
 def home(request):
@@ -32,7 +36,7 @@ def home(request):
 def register_view(request):
     if request.method=='GET':
         form=UserCreationForm()
-        
+
     if request.method=='POST':
         form=UserCreationForm(data=request.POST)
         if form.is_valid():
@@ -52,7 +56,7 @@ def login_view(request):
     if request.method=='POST':
         form = AuthenticationForm(data=request.POST)
         if form.is_valid():
-            #LOG IN THE USER HERE 
+            #LOG IN THE USER HERE
             user=form.get_user()
             login(request, user)
             return redirect('/')
@@ -65,5 +69,35 @@ def logout_view(request):
     else:
         return redirect('/')
 
-#close mysql database connection    
+def new_recipe_view(request):
+    if request.method=='GET':
+        # TODO: need to render a form for the current user
+        return render(request, 'new-recipe.html')
+
+def saved_recipes_view(request):
+    if request.method=='GET':
+        # TODO: need to render a form for the current user
+        return render(request, 'saved-recipes.html')
+
+def search_results_view(request):
+    if request.method=='GET':
+        # TODO: need to render the results for the current user, this wont work as is
+        return render(request, 'search-results.html')
+
+def recipe_view(request):
+    if request.method=='GET':
+        return render(request, 'recipe.html')
+
+
+#The following code is for debugging purposes to look into the database through print statements when starting app.
+"""
+connCursor.execute("Show tables;")
+result = connCursor.fetchall()
+
+for s in result:
+    print(s)
+"""
+
+
+#close mysql database connection
 conn.close()
