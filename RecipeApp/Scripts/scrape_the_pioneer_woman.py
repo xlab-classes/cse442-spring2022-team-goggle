@@ -17,17 +17,47 @@ def scrape_pioneer_recipes():
 
     recipe_links = []
     for b in b_unique:
-        if "cooking-tips-tutorials" in str(b.find("loc")) or "/recipes/" in str(b.find("loc")):
+        #"cooking-tips-tutorials" in str(b.find("loc")) or
+        if "/recipes/" in str(b.find("loc")):
             # remove <loc> and </loc> (im lazy)
             recipe_links += [str(b.find("loc"))[5:-6]]
 
     for url in recipe_links:
+        print(url)
         get = requests.get(url)
         soup = BeautifulSoup(get.content, "html.parser")
-        # if url is recipe
 
-        # if url in cooking-tips-tutorials
+        try:
+            if  bool(soup.find_all(class_="recipe-hed")[0].text):
+                title = soup.find_all(class_="recipe-hed")[0].text
+            else:
+                continue
+        except: continue
+        ingredients = []
 
-        # gonna need to catch all errors :| ... >:)
+        ingredients_elems = soup.find_all(class_="ingredient-item")
 
-scrape_pioneer_recipes()
+        for ingredient in ingredients_elems:
+            if bool(ingredient.find_all(class_="ingredient-amount")):
+                # i am so sorry if you are reading this
+                # we are just splitting to remove whitespace chars and then joining it with " "'s in between
+                amount = " ".join(ingredient.find_all(class_="ingredient-amount")[0].text.split())
+                ingre = " ".join(ingredient.find_all(class_="ingredient-description")[0].text.split())
+                ing_string =  amount + " " + ingre
+            else:
+                ing_string = ingredient.find_all(class_="ingredient-description")[0].text.strip()
+
+            if ing_string not in ingredients:
+                ingredients += [ing_string]
+
+
+        directions_elem = soup.find_all(class_="direction-lists")[0]
+        direction_elems = directions_elem.find_all('li')
+
+        directions = []
+        # remove the li
+        for elem in direction_elems:
+            directions += [elem.text.strip().replace('\xa0', ' ')]
+
+        recipes += [{"title": title, "ingredients": ingredients, "directions": directions}]
+    return recipes
