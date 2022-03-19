@@ -55,4 +55,3 @@ def scrape_recipes():
             dict = {"title": title, "ingredients": ingredients, "directions": directions}
             recipes += [dict]
     return recipes
-    print("Done")
