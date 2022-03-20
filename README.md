@@ -13,3 +13,4 @@ Before running be sure to
 # Website to scrape
 https://www.therecipedepository.com/
 https://www.thepioneerwoman.com/
+https://www.foodnetwork.com/robots.txt
