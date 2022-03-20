@@ -21,9 +21,11 @@ def scrape_pioneer_recipes():
         if "/recipes/" in str(b.find("loc")):
             # remove <loc> and </loc> (im lazy)
             recipe_links += [str(b.find("loc"))[5:-6]]
-
+    sz = str(len(recipe_links))
+    i = 0
     for url in recipe_links:
-        print(url)
+        print(str(i) + " / " + sz )
+        i+=1
         get = requests.get(url)
         soup = BeautifulSoup(get.content, "html.parser")
 

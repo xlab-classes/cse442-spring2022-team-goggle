@@ -20,15 +20,18 @@ def scrape_food_network_a():
         if "/recipes/" in str(b.find("loc")):
             # remove <loc> and </loc> (im lazy)
             recipe_links += [str(b.find("loc"))[5:-6]]
-
+    sz = str(len(recipe_links))
+    i = 0
     for url in recipe_links:
-        print(url)
+        print(str(i) + " / " + sz )
+        i += 1
         get = requests.get(url)
         soup = BeautifulSoup(get.content, "html.parser")
 
         # get the title
-        title = soup.find_all(class_="o-AssetTitle__a-HeadlineText")[0].text
-
+        try:
+            title = soup.find_all(class_="o-AssetTitle__a-HeadlineText")[0].text
+        except: continue
         # get the ingredients
         ingredient_elements = soup.find_all(class_="o-Ingredients__a-Ingredient--Checkbox")
         ingredients = list(map(lambda x: x["value"], ingredient_elements))
