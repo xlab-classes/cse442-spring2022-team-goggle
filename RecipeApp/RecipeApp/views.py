@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from mysqlx import Auth
-from RecipeApp import settings
+from RecipeApp import settings, queries
 import mysql.connector
 from django.contrib.auth import logout
 
@@ -40,8 +40,8 @@ def register_view(request):
     if request.method=='POST':
         form=UserCreationForm(data=request.POST)
         if form.is_valid():
-            #add user to database
-            form.save()
+            user=form.save() #added to auth_user table for login/auth purposes
+            queries.addNewProfile(user) #initialize a new profile row on profiles table to hold user data
             #SEND USER TO LOGIN PAGE
             return redirect('/login')
 
