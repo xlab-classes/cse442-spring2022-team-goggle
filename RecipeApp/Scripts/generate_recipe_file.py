@@ -4,12 +4,15 @@ import scrape_the_pioneer_woman
 f = open("recipes.txt", "a")
 
 # run the food network script
-recipe_list = scrape_food_network_a()
+recipe_list = scrape_foodnetwork_1.scrape_food_network_a()
 for item in recipe_list:
-    f.write(item)
+    f.write(str(item))
+    f.write('\n')
 
-recipe_list = scrape_pioneer_recipes()
+# run the pioneer woman script
+recipe_list = scrape_the_pioneer_woman.scrape_pioneer_recipes()
 for item in recipe_list:
-    f.write(item)
+    f.write(str(item))
+    f.write('\n')
 
 f.close()
