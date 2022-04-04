@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -6,7 +6,7 @@ from mysqlx import Auth
 from RecipeApp import settings, queries
 import mysql.connector
 from django.contrib.auth import logout
-
+from .forms import NameForm
 
 #Connect to sql database here
 config = {
@@ -97,7 +97,6 @@ result = connCursor.fetchall()
 for s in result:
     print(s)
 """
-
 
 #close mysql database connection
 conn.close()

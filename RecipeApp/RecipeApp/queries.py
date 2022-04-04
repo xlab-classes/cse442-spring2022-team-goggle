@@ -43,7 +43,7 @@ def getUsersSavedRecipeIds(userObject):
     username=str("'"+userObject.get_username()+"'")
     userid=str("'"+str(userObject.id)+"'")
     cursor=conn.cursor()
-    cursor.execute("SELECT savedrecipe_ids FROM profiles WHERE userid=" + userid +";") 
+    cursor.execute("SELECT savedrecipe_ids FROM profiles WHERE userid=" + userid +";")
     row = cursor.fetchone() #comma sep string containing ids
     recipeids=row.split(",") #list of recipe ids
     cursor.close()
@@ -60,7 +60,7 @@ def getRecipeTitle(recipeID):
 
 
 
-#input username and recipeid string. recipeid will be removed from users savedrecipe_ids in profiles table. Nothing is returned. 
+#input username and recipeid string. recipeid will be removed from users savedrecipe_ids in profiles table. Nothing is returned.
 def removeSavedRecipeFromProfile(userObject, recipeid):
     username=str("'"+userObject.get_username()+"'")
     userid=str("'"+str(userObject.id)+"'")
@@ -69,3 +69,11 @@ def removeSavedRecipeFromProfile(userObject, recipeid):
     ids.remove(recipeid) #list of ids now has input recipeid removed
     idsString=','.join(ids)
     cursor.execute("UPDATE profiles SET savedrecipes_ids="+idsString +"WHERE userid="+userid +";")
+
+# for testing purposes
+def createTestRecipes():
+    title = "test recipe"
+    ingredients = "ing1, ing2"
+    directions = "directions of test recipe"
+    cursor=conn.cursor()
+    cursor.execute("INSERT INTO recipes (title, ingredients, direction) VALUES ("+title+", "+ingredients+ ", "+ description +");")
