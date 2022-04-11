@@ -6,7 +6,18 @@
 
 <body>
   <h1>This is Recipe App new Recipe page</h1>
+  <label for="title">Recipe Title: </label>
+  <input id="title" type="text" name="title" maxlength="100" required>
+
+  <label for="ingredients">Ingredients: </label>
+  <input id="your_name" type="text" name="your_name" maxlength="10000" required>
+
+  <label for="directions">Directions: </label>
+  <input id="your_name" type="text" name="your_name" maxlength="10000" required>
+
+
   <a href="{% url 'savedrecipes'%}">Go to saved Recipes page</a>
 </body>
+
 
 </html>
