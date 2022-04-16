@@ -14,3 +14,9 @@ Before running be sure to
 https://www.therecipedepository.com/
 https://www.thepioneerwoman.com/
 https://www.foodnetwork.com/robots.txt
+
+
+# for department server:
+
+copying files :  https://unix.stackexchange.com/questions/374823/how-to-copy-directories-via-ssh
+setting up the virtual environment: https://wiki.cse.buffalo.edu/services/content/flask
