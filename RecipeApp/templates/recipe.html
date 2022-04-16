@@ -1,11 +1,29 @@
 <!DOCTYPE html>
 
 <head>
-  <title>This is Recipe page</title>
+  <title>Recipe: TITLE</title>
 </head>
 
 <body>
   <h1>This is Recipe App Recipe page</h1>
+
+  <h1>Ingredients:</h1>
+
+  <ul>
+    <li><input type="checkbox"> Ingredient 1</li>
+    <li><input type="checkbox"> Ingredient 2</li>
+  </ul>
+
+  <h1>Directions:</h1>
+
+  <ul>
+    <li><input type="checkbox"> Step 1:</li>
+    <li><input type="checkbox"> Step 2:</li>
+    <li><input type="checkbox"> Step 3:</li>
+
+  </ul>
+
+
   <a href="{% url 'newrecipe'%}">Go to new Recipe page</a>
 </body>
 
