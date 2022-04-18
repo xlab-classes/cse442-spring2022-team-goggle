@@ -89,6 +89,18 @@ def recipe_view(request):
         return render(request, 'recipe.html')
 
 
+def create_a_recipe_view(request):
+    if request.method=='GET':
+        return render(request, 'create-a-recipe.html')
+
+    if request.method=='POST':
+        #adding a user created recipe to db
+        queries.addNewUserCreatedRecipe(request.POST.get('title'),request.POST.get('ingredients'),request.POST.get('instructions'),request.user.get_username())
+        queries.saveRecipeToProfile(request.user, request.POST.get('title'))
+        #response page after a user adds their recipe
+        return HttpResponse("Your recipe was added to our site as well as added to your saved recipes. Your saved recipes are now: "+str(queries.getUsersSavedRecipeIds(request.user))+ " and your created recipes are now: "+str(queries.getUsersCreatedRecipeIds(request.user.get_username())))
+        
+
 #The following code is for debugging purposes to look into the database through print statements when starting app.
 """
 connCursor.execute("Show tables;")
