@@ -27,6 +27,7 @@ urlpatterns = [
     path('recipe/', views.recipe_view, name="recipe"),
     path('saved_recipes/', views.saved_recipes_view, name="savedrecipes"),
     path('search_results/', views.search_results_view, name="searchresults"),
+    path('create_a_recipe/', views.create_a_recipe_view, name="createarecipe"),
 
 
 ]
