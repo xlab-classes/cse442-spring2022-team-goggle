@@ -17,10 +17,11 @@ def scrape_food_network_a():
 
     recipe_links = []
     for b in b_unique:
-        #"cooking-tips-tutorials" in str(b.find("loc")) or
-        if "/recipes/" in str(b.find("loc")):
-            # remove <loc> and </loc> (im lazy)
-            recipe_links += [str(b.find("loc"))[5:-6]]
+        try:
+            if "/recipes/" in str(b.find("loc")):
+                # remove <loc> and </loc> (im lazy)
+                recipe_links += [str(b.find("loc"))[5:-6]]
+        except: continue
     sz = str(len(recipe_links))
     i = 0
     for url in recipe_links:
@@ -45,7 +46,7 @@ def scrape_food_network_a():
             if len(directions) == 0: continue
 
 
-            recipes += [{"title": title, "ingredients": ingredients, "directions": directions}]
+            recipes += [{"url": url, "title": title, "ingredients": ingredients, "directions": directions}]
         except: continue
 
     return recipes
