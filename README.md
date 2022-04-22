@@ -1,22 +1,14 @@
-# cse442-spring2022-team-goggle
-cse442-spring2022-team-goggle created by GitHub Classroom
+This is the branch for the transition to Flask
 
-To run server: cd into Recipe App folder and run command "python manage.py runserver"
+# How to install the necessary packages
+pip install flask
+pip install flask-login
+pip install flask-sqlalchemy
+pip install beautifulsoup4
 
-Before running be sure to
-1. pip install django
-2. pip install mysql
-3. pip install mysql-connector-python
-4. If you are trying to run the server from a non-UB connection, you
-    need to set up a vpn. see: https://www.buffalo.edu/ubit/service-guides/connecting/vpn/computer.html for a tutorial
-=======
-# Website to scrape
-https://www.therecipedepository.com/
-https://www.thepioneerwoman.com/
-https://www.foodnetwork.com/robots.txt
-
-
-# for department server:
-
-copying files :  https://unix.stackexchange.com/questions/374823/how-to-copy-directories-via-ssh
-setting up the virtual environment: https://wiki.cse.buffalo.edu/services/content/flask
+Versions:
+Python                 3.8.10
+Flask                  2.1.1
+Flask-Login            0.6.0
+Flask-SQLAlchemy       2.5.1
+beautifulsoup4         4.10.0
