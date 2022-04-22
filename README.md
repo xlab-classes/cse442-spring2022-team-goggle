@@ -25,3 +25,11 @@ beautifulsoup4         4.10.0
    export FLASK_DEBUG=1
 9. flask run --host=0.0.0.0 -p 5009 or whatever port you want
 10. visit http://www-student.cse.buffalo.edu:5009/ or whatever port
+
+
+todo:
+https://hackersandslackers.com/flask-sqlalchemy-database-models/
+
+create models for: users, ingredients, recipes
+each recipe gets a list of ingredients
+connect the flask application to the oceanus mysql 
