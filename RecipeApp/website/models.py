@@ -19,5 +19,3 @@ class Recipe(db.Model):
     title =
     url =
     ingredients =
-
-#1.24 hours
