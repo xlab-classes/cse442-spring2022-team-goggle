@@ -1,14 +1,10 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-
-db = SQLAlchemy()
-DB_NAME = "cse442_2022_spring_team_e_db"
+ng_team_e_db"
 
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'jflsiejwlkjsdf'
-    app.config['SQLALCHEMY_DATABASE_URI'] = mysql://jlchugh:50335580@oceanus.cse.buffalo.edu/db
-    db.init_app(app)
+
 
 
     # import the views
