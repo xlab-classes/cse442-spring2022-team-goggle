@@ -1,5 +1,5 @@
 from flask import Flask
-ng_team_e_db"
+
 
 def create_app():
     app = Flask(__name__)
