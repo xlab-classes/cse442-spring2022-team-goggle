@@ -6,8 +6,9 @@ DB_NAME = "cse442_2022_spring_team_e_db"
 
 def create_app():
     app = Flask(__name__)
-    # MAKE SURE TO CHANGE THIS WHEN IT RUNS ON THE DEPARTMENT SERVER
     app.config['SECRET_KEY'] = 'jflsiejwlkjsdf'
+    app.config['SQLALCHEMY_DATABASE_URI'] = mysql://jlchugh:50335580@oceanus.cse.buffalo.edu/db
+    db.init_app(app)
 
 
     # import the views

@@ -5,6 +5,8 @@ pip install flask
 pip install flask-login
 pip install flask-sqlalchemy
 pip install beautifulsoup4
+pip install flask-mysql
+
 
 Versions:
 Python                 3.8.10
@@ -12,6 +14,7 @@ Flask                  2.1.1
 Flask-Login            0.6.0
 Flask-SQLAlchemy       2.5.1
 beautifulsoup4         4.10.0
+Flask-MySQL            1.5.2
 
 # accessing on the department server https://wiki.cse.buffalo.edu/services/content/flask
 1. set up ubvpn and connect
@@ -22,7 +25,7 @@ beautifulsoup4         4.10.0
 6. . venv/bin/activate
 7. cd in to cse442_goggle_whatever/ recipeapp
 8. export FLASK_APP=main.py
-   export FLASK_DEBUG=1
+   export FLASK_DEBUG=1                                         export FLASK_APP=main.py; export FLASK_DEBUG=1
 9. flask run --host=0.0.0.0 -p 5009 or whatever port you want
 10. visit http://www-student.cse.buffalo.edu:5009/ or whatever port
 
@@ -32,4 +35,4 @@ https://hackersandslackers.com/flask-sqlalchemy-database-models/
 
 create models for: users, ingredients, recipes
 each recipe gets a list of ingredients
-connect the flask application to the oceanus mysql 
+connect the flask application to the oceanus mysql
