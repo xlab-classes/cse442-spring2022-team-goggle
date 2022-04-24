@@ -11,11 +11,12 @@ class User(db.Model, UserMixin):
 
 class Ingredient(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    recipes = []
+    recipes = db.relationship('Recipe')
 
 
 class Recipe(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    title =
-    url =
-    ingredients =
+    title = db.Column(db.String(1000))
+    url = db.Column(db.String(1000))
+    ingredients = db.Column(db.String(10000)) # store ingredients as a character separated list
+    directions =  db.Column(db.String(10000)) #same with ingredients
