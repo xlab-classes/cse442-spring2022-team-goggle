@@ -1,7 +1,27 @@
-{% extends 'base.html' %}
-{% block title%}Home{% endblock%}
-
-
-{%block content%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World</title>
+</head>
+<!-- Nav bar can be put here. Right now there is only a logout button pushed to the right-->
+<form action="/logout/" align="right" method="get">
+    <label class="logout">
+        <input type="submit" value="Logout">
+    </label>
+  </form>
 <h1>This is the home page</h1>
-{%endblock%}
+<body>
+    <h1> Hello there ! Feel free to login or register below</h1>
+
+    <br><br>
+    <h3>
+        <a href="/login">Login Here!</a>
+    </h3>
+    <br><br>
+    <h3>
+        <a href="/register">Register Here!</a>
+    </h3>
+</body>
+</html>
+
+
