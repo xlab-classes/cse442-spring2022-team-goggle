@@ -29,9 +29,8 @@ Flask-MySQL            1.5.2
 10. visit http://www-student.cse.buffalo.edu:5009/ or whatever port
 
 
-todo:
-https://hackersandslackers.com/flask-sqlalchemy-database-models/
+mysql -h oceanus -u ubit -p
 
-create models for: users, ingredients, recipes
-each recipe gets a list of ingredients
-connect the flask application to the oceanus mysql
+
+https://docs.ponyorm.org/firststeps.html
+https://www.blog.pythonlibrary.org/2014/07/21/python-101-an-intro-to-pony-orm/

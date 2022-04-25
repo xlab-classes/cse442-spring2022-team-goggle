@@ -1,83 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <style>
-    h1 {text-align: center;}
-    body {text-align: center;}
-    li {display: inline;}
-    .navbar {list-style-type: none;
-            margin: 10px 35px;
-            padding: 4px 0px;
-            background-color: black;
-      		border-radius: 12px;
-  			}
-    .submitbutton {
-      background-color: red;
-      border-style: solid;
-      border-color: black;
-      border-radius: 12px;
-      color: white;
-      padding: 12px 32px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 20px;
-      margin: 4px 2px;
-      cursor: pointer;
-	  }
-    .logoutbutton {
-      background-color: red;
-      border-style: solid;
-      border-color: black;
-      border-radius: 12px;
-      color: white;
-      padding: 5px 20px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 20px;
-      margin: 4px 2px;
-      cursor: pointer;
-      position: absolute;
-      right: 5px;
-      bottom: 5px;
-    }
-    .navbutton {
-    background-color: blue;
-      border-style: solid;
-      border-color: white;
-      border-radius: 12px;
-      color: white;
-      padding: 8px 32px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 20px;
-      margin: 4px 2px;
-      cursor: pointer;
-	    }
-      * {
-        font-family: Helvetica, sans-serif;
-      }
-    </style>
-    <meta charset="UTF-8">
-    <title>Login Page</title>
-    <ul class="navbar">
-  		<li><a class="navbutton" href="/">Home</a></li>
-  		<li><a class="navbutton" href="/login">Login</a></li>
-  		<li><a class="navbutton" href="/register">Register</a></li>
-  		<li><a class="navbutton" href="/profile">Profile</a></li>
-      <li><a class="navbutton" href="/create_a_recipe">Create a Recipe</a></li>
-	</ul>
-</head>
-<h1> LOGIN: </h1>
-<body style="background-color:DeepSkyBlue;">
-    <form action="/login/" method='POST'> {% csrf_token %}
-        {{ form }}
-        <br><br>
-        <input class="submitbutton" type="submit" value="Login">
-      </form>
-</body>
-<br><br><br><br><br><br><br><br><br>
-<a class="logoutbutton" href="/logout"> Logout</a>
-</html>
+{% extends 'base.html' %}
+{% block title%}Login{% endblock%}
+
+
+{%block content%}
+<form method="POST">
+  <h3 align="center">Login</h3>
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com"></input>
+
+    <label for="password">Password:</label>
+    <input type="password" class="form-control" id="password" name="password" placeholder="password"></input>
+  </div>
+  <br />
+  <button type="submit" class="btn btn-primary">Login</button>
+
+</form>
+
+
+
+{%endblock%}

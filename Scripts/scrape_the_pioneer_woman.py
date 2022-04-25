@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse
 import requests
+import pdb
 
 # returns a list of dictionaries in the form {"title": title, "ingredients": ingredients, "instructions": instructions}
 # where ingredients, and instructions are lists of strings and title is a string
@@ -13,7 +14,7 @@ def scrape_pioneer_recipes():
     with open('../Data/pioneer_data.xml', 'r') as f:
         data = f.read()
 
-    Bs_data = BeautifulSoup(data, "xml")
+    Bs_data = BeautifulSoup(data, "lxml")
     b_unique = Bs_data.find_all('url')
 
     recipe_links = []
@@ -23,13 +24,13 @@ def scrape_pioneer_recipes():
                 # remove <loc> and </loc> (im lazy)
                 recipe_links += [str(b.find("loc"))[5:-6]]
         except: continue
-    sz = str(len(recipe_links))
-    i = 0
+    #sz = str(len(recipe_links))
+    #i = 0
     for url in recipe_links:
         try:
 
-            print(str(i) + " / " + sz )
-            i+=1
+            #print(str(i) + " / " + sz )
+            #i+=1
 
             get = requests.get(url)
             soup = BeautifulSoup(get.content, "html.parser")
@@ -66,5 +67,6 @@ def scrape_pioneer_recipes():
 
             recipes += [{"url": url, "title": title, "ingredients": ingredients, "directions": directions}]
         except: continue
+
 
     return recipes

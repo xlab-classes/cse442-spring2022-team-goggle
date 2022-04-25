@@ -2,13 +2,14 @@ from flask import Flask
 
 from pony.orm import *
 from os import path
+import pdb
 
+db = Database()
 
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'jflsiejwlkjsdf'
 
-    db = Database()
 
     from .models import User, Ingredient, Recipe
 
@@ -23,6 +24,7 @@ def create_app():
             passwd='50335580', db='cse442_2022_spring_team_e_db')
 
     db.generate_mapping(create_tables=True)
+    #db.set_sql_debug(True)
     # import the views
     from .views import views
     from .auth import auth
