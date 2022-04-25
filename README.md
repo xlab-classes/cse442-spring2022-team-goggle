@@ -3,9 +3,8 @@ This is the branch for the transition to Flask
 # How to install the necessary packages
 pip install flask
 pip install flask-login
-pip install flask-sqlalchemy
 pip install beautifulsoup4
-pip install flask-mysql
+pip install pony
 
 
 Versions:

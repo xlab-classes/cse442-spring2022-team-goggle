@@ -1,21 +1,19 @@
 from . import db
 from flask_login import UserMixin
 
-class User(db.Model, UserMixin):
-    id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(50), unique=True)
-    first_name = db.Column(db.String(50))
-    last_name = db.Column(db.String(50))
-    password = db.Column(db.String(50))
+class User(db.Entity, UserMixin):
+    email = Required(str)
+    first_name = Required(str)
+    last_name = Required(str)
+    password = Required(str)
 
-class Ingredient(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    recipes = db.relationship('Recipe')
+class Ingredient(db.Entity):
+    name =  Required(str)
+    recipes = Set('Recipe')
 
 
-class Recipe(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(1000))
-    url = db.Column(db.String(1000))
-    ingredients = db.Column(db.String(10000)) # store ingredients as a character separated list
-    directions =  db.Column(db.String(10000)) #same with ingredients
+class Recipe(db.Entity):
+    title =  Required(str)
+    url = Required(str)
+    ingredients =  Required(str) # store ingredients as a character separated list
+    directions =  Required(str)#same with ingredients
