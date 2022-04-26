@@ -4,8 +4,9 @@ This is the branch for the transition to Flask
 pip install flask
 pip install flask-login
 pip install beautifulsoup4
+pip install lxml
 pip install pony
-
+pip install flashtext (for populate_oceanus)
 
 Versions:
 Python                 3.8.10
@@ -28,9 +29,14 @@ Flask-MySQL            1.5.2
 9. flask run --host=0.0.0.0 -p 5009 or whatever port you want
 10. visit http://www-student.cse.buffalo.edu:5009/ or whatever port
 
+# some random sql stuff
+mysql -h oceanus -u jlchugh -p
 
-mysql -h oceanus -u ubit -p
-
+SHOW DATABASES;
+USE cse442_2022_spring_team_e_db;
+SHOW TABLES;
+drop table table name;
+SELECT * FROM user
 
 https://docs.ponyorm.org/firststeps.html
 https://www.blog.pythonlibrary.org/2014/07/21/python-101-an-intro-to-pony-orm/

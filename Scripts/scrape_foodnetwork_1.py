@@ -27,6 +27,7 @@ def scrape_food_network_a():
     #i = 0
     for url in recipe_links:
         try:
+            print("hi")
             #print(str(i) + " / " + sz )
             #i += 1
 

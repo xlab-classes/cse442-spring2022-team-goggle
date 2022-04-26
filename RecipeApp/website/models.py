@@ -4,19 +4,26 @@ from pony.orm import *
 
 
 class User(db.Entity, UserMixin):
+    id = PrimaryKey(int, auto=True)
     email = Required(str)
     first_name = Required(str)
     last_name = Required(str)
     password = Required(str)
-    #saved_recipes = Set('Recipe')
+    saved_recipes = Set('Recipe')
+
 
 class Ingredient(db.Entity):
-    name =  Required(str)
-    #recipes = Set('Recipe')
+    id = PrimaryKey(int, auto=True)
+    name = Required(str)
+    recipes = Set('Recipe')
 
 
 class Recipe(db.Entity):
-    title =  Required(str)
+    id = PrimaryKey(int, auto=True)
+    title = Required(str)
     url = Required(str)
-    ingredients =  Required(str) # store ingredients as a character separated list
-    directions =  Required(str)#same with ingredients
+    # store ingredients as a character separated list
+    ingredients = Required(str)
+    directions = Required(str)  # same with ingredients
+    users_with_saved = Set(User)
+    linked_ingredients = Set(Ingredient)
