@@ -38,6 +38,6 @@ SHOW TABLES;
 drop table table name;
 SELECT * FROM user
 
-#pony resources
+# pony resources
 https://docs.ponyorm.org/firststeps.html
 https://www.blog.pythonlibrary.org/2014/07/21/python-101-an-intro-to-pony-orm/
