@@ -37,6 +37,9 @@ USE cse442_2022_spring_team_e_db;
 SHOW TABLES;
 drop table table name;
 SELECT * FROM user
+SET FOREIGN_KEY_CHECKS = 0
+drop table ingredient; drop table ingredient_recipe; drop table recipe; drop table recipe_user; drop table user; 
+
 
 # pony resources
 https://docs.ponyorm.org/firststeps.html
