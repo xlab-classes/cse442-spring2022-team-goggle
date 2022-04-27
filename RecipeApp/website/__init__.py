@@ -2,9 +2,7 @@ from flask import Flask
 
 import pdb
 
-saved_recipes = []
-recipes = []
-ingredients = []
+from .global_vars import *
 
 
 def create_app():
@@ -23,9 +21,6 @@ def create_app():
 
 
 def create_model_data():
-    global saved_recipes
-    global ingredients
-    global recipes
     from .models import User, Ingredient, Recipe
     # create some recipes
     hamburger = Recipe(title="hambuger",
@@ -43,10 +38,13 @@ def create_model_data():
                                                                     "bread", "mayonnaise", "ground chuck"],
                              directions=["cook the ground chuck to safe temperature", "butter and toast the bread", "apply cheese and toast for 3 minutes or until cheese is melted", "add condiments"])
 
-    recipes = [hamburger, grilled_cheese, burger_sandwich]
+    global_vars.recipes += [hamburger, grilled_cheese, burger_sandwich]
 
-    ingredients += [Ingredient(name="ground chuck", recipes=[hamburger, burger_sandwich])]
-    ingredients += [Ingredient(name="cheddar cheese", recipes=[hamburger, burger_sandwich, grilled_cheese])]
-    ingredients += [Ingredient(name="bread", recipes=[burger_sandwich, grilled_cheese])]
+    global_vars.ingredients += [Ingredient(name="ground chuck",
+                                           recipes=[hamburger, burger_sandwich])]
+    global_vars.ingredients += [Ingredient(name="cheddar cheese",
+                                           recipes=[hamburger, burger_sandwich, grilled_cheese])]
+    global_vars.ingredients += [Ingredient(name="bread",
+                                           recipes=[burger_sandwich, grilled_cheese])]
 
-    saved_recipes = [grilled_cheese]
+    global_vars.saved_recipes += [grilled_cheese,hamburger]

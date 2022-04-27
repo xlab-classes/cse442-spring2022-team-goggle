@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title%}Search Recipes{% endblock%}
+
+
+{%block content%}
+<form method="POST">
+  <h3 align="center">Search Recipes</h3>
+  <div class="form-group">
+    <label for="ingredients">Ingredients (separated by commas)</label>
+    <textarea class="form-control" name="ingredients" id="ingredients" rows="3"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Search</button>
+</form>
+{%endblock%}

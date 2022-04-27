@@ -8,15 +8,14 @@
   <div class="form-group">
     <label for="title">Recipe Title</label>
     <input type="text" class="form-control" id="title" name="title" placeholder="Recipe Title" />
-  </div>
-  <div class="form-group">
-    <label for="directions">Directions</label>
-    <textarea class="form-control" id="directions" rows="3"></textarea>
-  </div>
-  <div class="form-group">
+  
+    <label for="directions">Directions (separated by #)</label>
+    <textarea class="form-control" id="directions" name="directions" rows="3"></textarea>
+
     <label for="ingredients">Ingredients (separated by commas)</label>
-    <textarea class="form-control" id="ingredients" rows="3"></textarea>
+    <textarea class="form-control" id="ingredients" name="ingredients" rows="3"></textarea>
   </div>
+  <button type="submit" class="btn btn-primary">Save</button>
 </form>
 
 {%endblock%}
