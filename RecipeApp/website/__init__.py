@@ -37,14 +37,16 @@ def create_model_data():
                              url="burgersandwich.com", ingredients=["cheddar cheese",
                                                                     "bread", "mayonnaise", "ground chuck"],
                              directions=["cook the ground chuck to safe temperature", "butter and toast the bread", "apply cheese and toast for 3 minutes or until cheese is melted", "add condiments"])
+    individual_meatloafs = Recipe(url="https://www.foodnetwork.com/recipes/ina-garten/individual-meat-loaves-recipe-1952034", title='Individual Meat Loaves', ingredients=['olive oil', 'ground chuck', 'onions', 'thyme', 'chicken stock', 'bread crumbs', 'eggs'], directions=["Preheat the oven to 350 degrees F. Heat the olive oil in a medium saute pan. Add the onions, thyme, salt, and pepper and cook over medium-low heat, stirring occasionally, for 8 to 10 minutes, until the onions are translucent but not brown. Off the heat, add the Worcestershire sauce, chicken stock, and tomato paste. Allow to cool slightly.", "In a large bowl, combine the ground chuck, onion mixture, bread crumbs, and eggs, and mix lightly with a fork. Don't mash or the meatloaf will be dense.", " Divide the mixture into 6 (10 to 11-ounce) portions and shape each portion into a small loaf on a sheet pan. Spread about a tablespoon of ketchup on the top of each portion. Bake for 40 to 45 minutes, until the internal temperature is 155 to 160 degrees F and the meat loaves are cooked through. Serve hot."])
 
-    global_vars.recipes += [hamburger, grilled_cheese, burger_sandwich]
+    global_vars.recipes += [hamburger, grilled_cheese,
+                            burger_sandwich, individual_meatloafs]
 
     global_vars.ingredients += [Ingredient(name="ground chuck",
-                                           recipes=[hamburger, burger_sandwich])]
+                                           recipes=[hamburger, burger_sandwich, individual_meatloafs])]
     global_vars.ingredients += [Ingredient(name="cheddar cheese",
                                            recipes=[hamburger, burger_sandwich, grilled_cheese])]
     global_vars.ingredients += [Ingredient(name="bread",
                                            recipes=[burger_sandwich, grilled_cheese])]
 
-    global_vars.saved_recipes += [grilled_cheese,hamburger]
+    global_vars.saved_recipes += [grilled_cheese, hamburger]
