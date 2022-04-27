@@ -1,29 +1,21 @@
-from . import db
-from flask_login import UserMixin
-from pony.orm import *
+
+class User:
+    def __init__(self, email, first_name, last_name, password, saved_recipes):
+        self.email = email
+        self.first_name = first_name
+        self.last_name = last_name
+        self.password = password
+        self.saved_recipes = saved_recipes
+
+class Ingredient:
+    def __init__(self, name, recipes):
+        self.name = name
+        self.recipes = recipes
 
 
-class User(db.Entity, UserMixin):
-    id = PrimaryKey(int, auto=True)
-    email = Required(str)
-    first_name = Required(str)
-    last_name = Required(str)
-    password = Required(str)
-    saved_recipes = Set('Recipe')
-
-
-class Ingredient(db.Entity):
-    id = PrimaryKey(int, auto=True)
-    name = Required(str)
-    recipes = Set('Recipe')
-
-
-class Recipe(db.Entity):
-    id = PrimaryKey(int, auto=True)
-    title = Required(str)
-    url = Required(str)
-    # store ingredients as a character separated list
-    ingredients = Required(str)
-    directions = Required(str)  # same with ingredients
-    users_with_saved = Set(User)
-    linked_ingredients = Set(Ingredient)
+class Recipe:
+    def __init__(self,title,url,ingredients,directions):
+        self.title = title
+        self.url = url
+        self.ingredients = ingredients
+        self.directions = directions

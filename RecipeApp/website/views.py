@@ -21,7 +21,7 @@ def search_recipe():
 
 
 # each recipe should have a button with 'go' on it for post
-@views.route('/view_saved_recipes', methods=['GET', 'POST'])
+@views.route('/saved_recipes', methods=['GET', 'POST'])
 def view_saved_recipes():
     return render_template("saved_recipes.html")
 
