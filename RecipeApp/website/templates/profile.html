@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title%}Profile {% endblock%}
+
+
+{%block content%}
+
+<body>
+
+    <div class="student-profile py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card shadow-sm">
+          <div class="card-header bg-transparent text-center">
+            <img class="profile_img" src="marvel cat.jpg" alt="Picture should go here" style="width:200px;height:200px;>
+          <h3>Username</h3>
+          </div> 
+          <div class="card-body">
+            <p class="mb-0"><strong class="pr-1">User Name:</strong>Charlie Jiang</p>
+            <p class="mb-0"><strong class="pr-1">Email Address:</strong>sjiang24@buffalo.edu</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="card shadow-sm">
+          <div class="card-header bg-transparent border-0">
+            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>General Information</h3>
+          </div>
+          <div class="card-body pt-0">
+            <table class="table table-bordered">
+              <tr>
+                <th width="30%">My Saved Recipes</th>
+                <td width="2%">:</td>
+                <td>Empty</td>
+              </tr>
+              <tr>
+                <th width="30%">My Created Recipes</th>
+                <td width="2%">:</td>
+                <td>Empty</td>
+              </tr>
+              <tr>
+                <th width="30%">My Favorite recipes!</th>
+                <td width="2%">:</td>
+                <td>Empty</td>
+              </tr>
+              <tr>
+                <th width="30%">Ingredients liked</th>
+                <td width="2%">:</td>
+                <td>Empty</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+
+{%endblock%}
