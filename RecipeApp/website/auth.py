@@ -4,7 +4,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from pony.orm import *
 import pony.orm as pny
 import pdb
-
+#from . import db
+from flask_login import login_user, login_required, logout_user, current_user
 
 auth = Blueprint('auth', __name__)
 
@@ -19,16 +20,19 @@ def login():
         if user:
             if check_password_hash(user.password, password):
                 flash("logged in", category='success')
+                login_user(user )
                 return redirect(url_for('views.home'))
             else: flash("Incorrect email or password.", category='error')
         else:
             flash("incorrect password", category='error')
-    return render_template("login.html")
+    return render_template("login.html", user=current_user)
 
 
 @auth.route('/logout')
+@login_required
 def logout():
-    return render_template("logout.html", name="example name")
+    logout_user()
+    return redirect(url_for('auth.login'))
 
 
 @auth.route('/register', methods=['GET', 'POST'])
@@ -49,4 +53,4 @@ def register():
                                 password=generate_password_hash(password, method='sha256'),)
             flash("registered", category='success')
             return redirect(url_for('views.home'))
-    return render_template("register.html")
+    return render_template("register.html",user=current_user)

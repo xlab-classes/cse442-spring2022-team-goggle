@@ -1,7 +1,13 @@
+
 {% extends 'base.html' %}
 {% block title%}Home{% endblock%}
 
 
 {%block content%}
-<h1>This is the home page</h1>
+<h1>Welcome, please select an option below.</h1>
+<br/>
+<a href="/saved_recipes" class="btn btn-primary" role="button">View Saved Recipes</a>
+<a href="/add_recipe" class="btn btn-primary" role="button">Add a New Recipe</a>
+<a href="/search_recipe" class="btn btn-primary" role="button">Search Recipes</a>
+
 {%endblock%}

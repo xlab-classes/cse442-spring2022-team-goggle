@@ -1,7 +1,8 @@
 from flask import Flask
+import pony.orm as pny
 
 from pony.orm import *
-
+from flask_login import LoginManager
 import pdb
 
 db = Database()
@@ -28,6 +29,16 @@ def create_app():
     # import the views
     from .views import views
     from .auth import auth
+
+    login_manager = LoginManager()
+    login_manager.login_view = 'auth.login'
+    login_manager.init_app(app)
+
+    @login_manager.user_loader
+    def load_user(id):
+        with pny.db_session:
+            user = User.get(id=id)
+        return user
 
     # register the views
     app.register_blueprint(views, url_prefix='/')
