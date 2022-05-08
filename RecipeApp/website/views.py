@@ -17,15 +17,23 @@ def home():
 def add_recipe():
     if request.method == 'POST':
         title = request.form.get('title')
-        ingredients = request.form.get("ingredients").split(',')
-        directions = request.form.get("directions").split('#')
-        rec_directions = []
-        for direction in directions:
-            break
+        ingredients = request.form.get("ingredients").replace(',', "#")
+        directions = request.form.get("directions")
+
 
 
         with pny.db_session:
-            new_recipe = Recipe(title = title, ingredients = intgredients, directions = recdirections)
+            new_recipe = Recipe(title = title, ingredients = ingredients, directions = directions,url="_")
+
+
+            for ingredient in ingredients.split('#'):
+                ing = Ingredient.select(lambda i: ingredient in i.name).first()
+                if ing:
+                    ing.recipes.add(new_recipe)
+                else:
+                    new_ing = Ingredient(name = ingredient)
+                    new_ing.recipes.add(new_recipe)
+
         flash("registered", category='success')
         return redirect(url_for('views.home'))
 
@@ -41,7 +49,7 @@ def search_recipe():
             return redirect(url_for('views.search_recipe'))
 
         ingredients_list = request.form.get("ingredients").split(',')
-
+        distance = int(request.form.get("distance")) + len(ingredients_list) # need to count the current ingredients
         # start with just the first ingredient
         recipe_results = set([])
         with pny.db_session:
@@ -52,8 +60,19 @@ def search_recipe():
 
         # convert back to a list
         recipe_results = list(recipe_results)
+        if distance == -1:
+            return render_template("recipe_search_results.html", recipes=recipe_results, user=current_user)
 
-        return render_template("recipe_search_results.html", recipes=recipe_results, user=current_user)
+
+        results_using_param = []
+        for result in recipe_results:
+            needed_ingredients = len(result.ingredients.split('#'))
+            available_ingredients = len(ingredients_list)
+            if needed_ingredients - available_ingredients <= distance:
+                results_using_param.append(result)
+
+
+        return render_template("recipe_search_results.html", recipes=results_using_param, user=current_user)
 
 
     return render_template("search_recipe.html", user=current_user)
@@ -69,7 +88,9 @@ def saved_recipes():
 @views.route('/my_profile', methods=['GET', 'POST'])
 @login_required
 def my_profile():
-    return render_template("my_profile.html", user=current_user)
+    with pny.db_session:
+        number = len(User.get(email=current_user.email, first_name = current_user.first_name, last_name = current_user.last_name).saved_recipes)
+    return render_template("my_profile.html", user=current_user,recipe_count = number)
 
 
 
