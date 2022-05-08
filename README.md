@@ -1,16 +1,36 @@
-# cse442-spring2022-team-goggle
-cse442-spring2022-team-goggle created by GitHub Classroom
+This is the branch for the transition to Flask
 
-To run server: cd into Recipe App folder and run command "python manage.py runserver"
+# How to install the necessary packages
+pip install flask
+pip install flask-login
+pip install beautifulsoup4
+pip install pony
 
-Before running be sure to
-1. pip install django
-2. pip install mysql
-3. pip install mysql-connector-python
-4. If you are trying to run the server from a non-UB connection, you
-    need to set up a vpn. see: https://www.buffalo.edu/ubit/service-guides/connecting/vpn/computer.html for a tutorial
-=======
-# Website to scrape
-https://www.therecipedepository.com/
-https://www.thepioneerwoman.com/
-https://www.foodnetwork.com/robots.txt
+
+Versions:
+Python                 3.8.10
+Flask                  2.1.1
+Flask-Login            0.6.0
+Flask-SQLAlchemy       2.5.1
+beautifulsoup4         4.10.0
+Flask-MySQL            1.5.2
+
+# accessing on the department server https://wiki.cse.buffalo.edu/services/content/flask
+1. set up ubvpn and connect
+2. ssh ubit@cheshire.cse.buffalo.edu
+3. cd /web/...../cse442e
+4. (set up virtual environment if its not already there)  python3.8 -m venv venv
+5. bash
+6. . venv/bin/activate
+7. cd in to cse442_goggle_whatever/ recipeapp
+8. export FLASK_APP=main.py
+   export FLASK_DEBUG=1                                         export FLASK_APP=main.py; export FLASK_DEBUG=1
+9. flask run --host=0.0.0.0 -p 5009 or whatever port you want
+10. visit http://www-student.cse.buffalo.edu:5009/ or whatever port
+
+
+mysql -h oceanus -u ubit -p
+mysql -h oceanus -u jlchugh -p
+
+https://docs.ponyorm.org/firststeps.html
+https://www.blog.pythonlibrary.org/2014/07/21/python-101-an-intro-to-pony-orm/

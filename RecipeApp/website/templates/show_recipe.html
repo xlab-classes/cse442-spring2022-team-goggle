@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title%}Recipe{% endblock%}
+
+
+{%block content%}
+<h1><u>View Recipe:</u> {{recipe.title}}</h1>
+<ul class="list-group list-group-flush" id="recipe_search_results">
+  <li class="list-group-item">
+    <h2><u>Title:</u> {{recipe.title}}</h2>
+    <h2><u>URL:</u></h2>
+    <h4 align="center"=><a href={{recipe.url}}>{{recipe.url}}</a></h4>
+
+    <h2><u>Ingredients</u></h2>
+
+    <ul class="list-group list-group-flush" id="ingredients">
+      {% for ingredient in recipe.ingredients.split('#') %}
+      <li class="list-group-item">
+        <p>{{ingredient}}</p>
+      </li>
+      {% endfor %}
+    </ul>
+
+
+    <h2><u>Directions</u></h2>
+    <ul class="list-group list-group-flush" id="directions">
+      {% for direction in recipe.directions.split('#') %}
+      <li class="list-group-item">
+        <p>{{direction}}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </li>
+</ul>
+{% if user.is_authenticated %}
+<form method="POST">
+  <button type="submit" class="btn btn-primary btn-lg">Save Recipe to Account</button>
+</form>
+<br /><br /><br /><br /><br /><br />
+{%endif%}
+
+{%endblock%}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title%}Add a Recipe{% endblock%}
+
+
+{%block content%}
+<form method="POST">
+  <h3 align="center">New Recipe</h3>
+  <div class="form-group">
+    <label for="title">Recipe Title</label>
+    <input type="text" class="form-control" id="title" name="title" placeholder="Recipe Title" />
+
+    <label for="directions">Directions (separated by #)</label>
+    <textarea class="form-control" id="directions" name="directions" rows="3"></textarea>
+
+    <label for="ingredients">Ingredients (separated by commas)</label>
+    <textarea class="form-control" id="ingredients" name="ingredients" rows="3"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+{%endblock%}

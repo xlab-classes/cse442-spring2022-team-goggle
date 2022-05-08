@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title%}Saved Recipes{% endblock%}
+
+
+{%block content%}
+<h1 align="center">Saved Recipes</h1>
+<ul class="list-group list-group-flush" id="saved_recipes">
+  {% for recipe in saved_recipes %}
+  <li class="list-group-item">
+    <a href='/show_recipe/{{recipe.title}}'>{{recipe.title}}</a>
+  </li>
+  {% endfor %}
+</ul>
+{%endblock%}

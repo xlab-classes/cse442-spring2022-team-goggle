@@ -1,0 +1,17 @@
+
+{% extends 'base.html' %}
+{% block title%}Results{% endblock%}
+
+
+{%block content%}
+<h1>Search Results</h1>
+<ul class="list-group list-group-flush" id="recipe_search_results">
+  {% for recipe in recipes %}
+  <li class="list-group-item">
+    <a href='/show_recipe/{{recipe.title}}'>{{recipe.title}}</a>
+  </li>
+  {% endfor %}
+</ul>
+
+
+{%endblock%}
