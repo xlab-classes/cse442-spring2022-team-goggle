@@ -60,7 +60,7 @@ def search_recipe():
 
         # convert back to a list
         recipe_results = list(recipe_results)
-        if distance == -1:
+        if int(request.form.get("distance")) == -1:
             return render_template("recipe_search_results.html", recipes=recipe_results, user=current_user)
 
 
