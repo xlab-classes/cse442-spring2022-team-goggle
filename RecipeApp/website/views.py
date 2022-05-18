@@ -16,7 +16,7 @@ def home():
                 self.ingredients = ingredients
                 self.directions = directions
 
-        # i have no words
+        
         display_these_recipes = []
         with pny.db_session:
             usr = User.get(email=current_user.email, first_name = current_user.first_name, last_name = current_user.last_name)
