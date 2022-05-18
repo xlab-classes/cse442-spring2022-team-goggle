@@ -16,7 +16,7 @@ def home():
                 self.ingredients = ingredients
                 self.directions = directions
 
-        
+
         display_these_recipes = []
         with pny.db_session:
             usr = User.get(email=current_user.email, first_name = current_user.first_name, last_name = current_user.last_name)
@@ -115,7 +115,6 @@ def my_profile():
 @views.route('/show_recipe/<recipe_title>', methods=['GET', 'POST'])
 def show_recipe(recipe_title):
     if request.method =='POST':
-        # I am going to hell for doing this
         class RecipeBodge:
             def __init__(self,title,url,ingredients,directions):
                 self.title = title
@@ -123,7 +122,6 @@ def show_recipe(recipe_title):
                 self.ingredients = ingredients
                 self.directions = directions
 
-        # i have no words
         display_these_recipes = []
         with pny.db_session:
             recipe = Recipe.select(title = recipe_title).first()
