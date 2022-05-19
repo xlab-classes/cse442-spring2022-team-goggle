@@ -4,9 +4,8 @@ This is the branch for the transition to Flask
 pip install flask
 pip install flask-login
 pip install beautifulsoup4
-pip install lxml
 pip install pony
-pip install flashtext (for populate_oceanus)
+
 
 Versions:
 Python                 3.8.10
@@ -29,18 +28,18 @@ Flask-MySQL            1.5.2
 9. flask run --host=0.0.0.0 -p 5009 or whatever port you want
 10. visit http://www-student.cse.buffalo.edu:5009/ or whatever port
 
-# some random sql stuff
+
+mysql -h oceanus -u ubit -p
 mysql -h oceanus -u jlchugh -p
 
-SHOW DATABASES;
-USE cse442_2022_spring_team_e_db;
-SHOW TABLES;
-drop table table name;
-SELECT * FROM user
-SET FOREIGN_KEY_CHECKS = 0
-drop table ingredient; drop table ingredient_recipe; drop table recipe; drop table recipe_user; drop table user; 
-
-
-# pony resources
 https://docs.ponyorm.org/firststeps.html
 https://www.blog.pythonlibrary.org/2014/07/21/python-101-an-intro-to-pony-orm/
+
+# How to Run the Application
+0. go to www-student.cse.buffalo.edu:5009/ with the ub vpn on OR
+1. install the necessary packages
+2. make sure you are connected to the ubvpn and open up a terminal
+3. cd into RecipeApp
+4. run 'export FLASK_APP=main.py; export FLASK_DEBUG=1'
+5. run 'flask run' or 'flask run --host=y.y.y.y -p xxxx' with the y's being the host and xxxx being your desired port
+6. go to the address in your favorite browser

@@ -4,9 +4,26 @@
 
 {%block content%}
 <h1>Welcome, please select an option below.</h1>
-<br/>
-<a href="/saved_recipes" class="btn btn-primary" role="button">View Saved Recipes</a>
-<a href="/add_recipe" class="btn btn-primary" role="button">Add a New Recipe</a>
-<a href="/search_recipe" class="btn btn-primary" role="button">Search Recipes</a>
+<br />
+<form method="POST">
+  <button type="submit" class="btn btn-primary">View Saved Recipes</button>
+</form>
+<br />
+<form>
+  <a href="/add_recipe" class="btn btn-primary" role="button">Add a New Recipe</a>
+</form>
+<br />
+
+<form>
+  <a href="/search_recipe" class="btn btn-primary" role="button">Search Recipes</a>
+</form>
+<br />
+
+
+<img src="img_1.png" alt="burger" width="250" height="250">
+<img src="img_2.png" alt="burger" width="250" height="250">
+<img src="img_3.png" alt="burger" width="250" height="250">
+<img src="img_4.png" alt="burger" width="300" height="250">
+
 
 {%endblock%}
