@@ -34,3 +34,12 @@ mysql -h oceanus -u jlchugh -p
 
 https://docs.ponyorm.org/firststeps.html
 https://www.blog.pythonlibrary.org/2014/07/21/python-101-an-intro-to-pony-orm/
+
+# How to Run the Application
+0. go to www-student.cse.buffalo.edu:5009/ with the ub vpn on OR
+1. install the necessary packages
+2. make sure you are connected to the ubvpn and open up a terminal
+3. cd into RecipeApp
+4. run 'export FLASK_APP=main.py; export FLASK_DEBUG=1'
+5. run 'flask run' or 'flask run --host=y.y.y.y -p xxxx' with the y's being the host and xxxx being your desired port
+6. go to the address in your favorite browser
