@@ -65,6 +65,10 @@ def search_recipe():
         if request.form.get("ingredients") == '':
             flash("Please enter ingredient(s)", category='error')
             return redirect(url_for('views.search_recipe'))
+        if request.form.get("distance") == '':
+            flash("Please enter number of missing ingredients", category='error')
+            return redirect(url_for('views.search_recipe'))
+
 
         ingredients_list = request.form.get("ingredients").split(',')
         distance = int(request.form.get("distance")) + len(ingredients_list) # need to count the current ingredients
