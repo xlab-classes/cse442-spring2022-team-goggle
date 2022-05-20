@@ -3,7 +3,10 @@
 
 
 {%block content%}
-<h1><u>My Profile:</u> {{user.first_name + " " + user.last_name}}</h1>
+<center><h1><u>My Profile:</u> {{ user.first_name + " " + user.last_name}}</h1></center>
+<center>
+  <image src="{{url_for('static',filename = 'unknown.png')}}" height="100" width="100" >
+</center>
 <ul class="list-group list-group-flush" id="user_info">
   <li class="list-group-item">
     <p>first name: {{user.first_name}}</p>
