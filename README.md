@@ -1,19 +1,37 @@
 This is the branch for the transition to Flask
 
-# How to install the necessary packages
-pip install flask
-pip install flask-login
-pip install beautifulsoup4
-pip install pony
-
-
-Versions:
-Python                 3.8.10
+# How to install the necessary packages run "python3.8 -m pip install" + the package name
+Package                Version
+---------------------- -----------
+beautifulsoup4         4.11.1
+click                  8.1.2
 Flask                  2.1.1
 Flask-Login            0.6.0
-Flask-SQLAlchemy       2.5.1
-beautifulsoup4         4.10.0
 Flask-MySQL            1.5.2
+flask-mysql-connector  1.1.0
+Flask-SQLAlchemy       2.5.1
+greenlet               1.1.2
+importlib-metadata     4.11.3
+itsdangerous           2.1.2
+Jinja2                 3.1.1
+lxml                   4.8.0
+MarkupSafe             2.1.1
+mysql-connector-python 8.0.28
+numpy                  1.22.3
+pandas                 1.4.2
+pip                    21.1.1
+pony                   0.7.16
+protobuf               3.20.1
+PyMySQL                1.0.2
+python-dateutil        2.8.2
+pytz                   2022.1
+setuptools             56.0.0
+six                    1.16.0
+soupsieve              2.3.2.post1
+SQLAlchemy             1.4.35
+Werkzeug               2.1.1
+zipp                   3.8.0
+
 
 # accessing on the department server https://wiki.cse.buffalo.edu/services/content/flask
 1. set up ubvpn and connect
